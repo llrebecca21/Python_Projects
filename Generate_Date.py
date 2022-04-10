@@ -4,16 +4,27 @@ Author: Rebecca Lee
 Credit:
 Description: Create a program such that given a number between 1 and 365 or 366 inclusive and a year, it will give what date it is
 '''
-# Create false year
-#year = input("Enter year: ")
-#day = input("Enter day of year: ")
-#print(year,day)
+
+'''
+Program Path
+1. Call start()
+    2. Call input_year()
+    3. Call input_day_of_year()
+    4. Call get_days_of_month()
+        5. Call is_leap_year()
+    6. Call get_date_string()
+        7. Call get days_in_month()
+        8. Call valid_day()
+
+
+
+'''
 
 
 def is_leap_year(year):
     """
     Check if a year provided is a leap year
-    
+
     Input:
         integer value of a year
 
@@ -84,10 +95,11 @@ def input_day_of_year(year):
     Must test for 0 (invalid year)
     """
     day = input("Enter day of year: ")
-    #if year == True:
-    #    return int(year)
-    #if year == False:
-    return int(day)
+    # call valid_year() to check
+    if valid_year(year) == True:
+        return int(year)
+    if valid_year(year) == False:
+        return int(day)
 
 def get_days_in_year(year):
     """
@@ -195,10 +207,10 @@ def get_date_string(year,month,day):
         an empty string if the year, month, or day are invalid;
         If both are valid a string formatted as Month Day, Year (December 1, 2018)
     """
-    if get_days_in_month(year,month) and valid_day(year,month,day) == True:
+    if valid_day(year, month, day) == True:
         return (month, str(day) + ",", year)
     else:
-        if get_days_in_month(year,month) or valid_day(year,month,day) == False:
+        if valid_day(year, month, day) == False:
             return "Error: year, month or day are invalid"
 
 def start():
@@ -208,12 +220,11 @@ def start():
     """
     # Call input_year function to set the year
     year = input_year()
-    day_of_year = 0
     if year > 0:
         # Call input_day_of _year to supply the day
         day_of_year = input_day_of_year(year)
     # Check that both year and day_of_year are valid entries
-        if year > 0 and day_of_year > 0:
+        if year > 0 and int(day_of_year) > 0:
             
             # Initialize variables
             total_days = 0
@@ -225,21 +236,22 @@ def start():
                     
                     # Call get_days_in_month: pass in provided year and cycle through the months
                     # get days_in_month returns: an integer value of how many days are in a given month
-                    days_in_month = get_days_in_month(year = year, month = i + 1)
+                    days_in_month = int(get_days_in_month(year = year, month = i + 1))
                     # Based on the day entered calculate total days in the month (including month the day_of_year is in)
                     total_days += days_in_month
                     
                     # Check if day_of_year is less than or equal to total days
                     # Otherwise keep looping
-                    if (day_of_year <= total_days):
+                    if (int(day_of_year) <= total_days):
                         # Take the month value it stopped at and add one to it (fix indexing)
                         month = i + 1
                         # Calculate day of the year
-                        day = day_of_year - (total_days - days_in_month)
+                        day = int(day_of_year - (total_days - days_in_month))
                         # Call of Search
                         search = False
             if month > 0 and day > 0:
-                #print("We are almost here!")
+                # This is where the bug is
+                print(month, day, year)
                 print(get_date_string(year,month,day))
 
 start()
