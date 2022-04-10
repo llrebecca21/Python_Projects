@@ -4,13 +4,16 @@ Author: Rebecca Lee
 Credit:
 Description: Create a program such that given a number between 1 and 365 or 366 inclusive and a year, it will give what date it is
 '''
+# Create false year
+year = input("Enter year: ")
+day = input("Enter day of year: ")
+print(year,day)
 
 def is_leap_year(year):
     """
     Takes an integer and returns True if year is a leap year or False if year is
     not a leap year
     """
-    valid = False
     if year % 4 == 0 :
         if year % 100 == 0:
             if year % 400 == 0:
@@ -57,10 +60,10 @@ def input_year():
     Must test for 0 (invalid year)
     """
     year = input("Enter year")
-    if year == False:
-        return 0
-    if year == True:
-        return int(year)
+        #if year == False:
+            #return 0
+            #if year == True:
+    return int(year)
 
 def input_day_of_year(year):
     """
@@ -69,10 +72,10 @@ def input_day_of_year(year):
     Must test for 0 (invalid year)
     """
     day = input("Enter day of year")
-    if year == True:
-        return int(year)
-    if year == False:
-        return 0
+    #if year == True:
+    #    return int(year)
+    #if year == False:
+    return int(day)
 
 def get_days_in_year(year):
     """
@@ -209,4 +212,3 @@ def start():
         if month > 0 and day > 0:
             print(get_date_string(year,month,day))
 
-start()
