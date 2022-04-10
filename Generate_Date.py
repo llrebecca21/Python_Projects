@@ -12,8 +12,14 @@ Description: Create a program such that given a number between 1 and 365 or 366 
 
 def is_leap_year(year):
     """
-    Takes an integer and returns True if year is a leap year or False if year is
-    not a leap year
+    Check if a year provided is a leap year
+    
+    Input:
+        integer value of a year
+
+    Returns:
+        True if year is a leap year or
+         False if year is not a leap year
     """
     valid = False
     if year % 4 == 0 :
@@ -146,7 +152,7 @@ def translate_month(month):
     or the month as a full month string ((e.g. January, December))
     """
     if valid_month(month) == True:
-        return get_full_month(i)
+        return get_full_month(month)
     else:
         return ""
 
@@ -154,7 +160,6 @@ def get_days_in_month(year,month):
     """
     Returns the number of days in a month as an integer,
     accounting for leap year, or returns 0 if the year or month is invalid
-    able to use this function
     """
     if is_leap_year(year) == True:
         if month == 1 or 3 or 5 or 7 or 8 or 10 or 12:
@@ -186,14 +191,15 @@ def valid_day(year,month,day):
 
 def get_date_string(year,month,day):
     """
-    Returns an empty string if the year, month, or day are invalid
-    or a string formatted as Month Day, Year (December 1, 2018)
+    Return:
+        an empty string if the year, month, or day are invalid;
+        If both are valid a string formatted as Month Day, Year (December 1, 2018)
     """
     if get_days_in_month(year,month) and valid_day(year,month,day) == True:
         return (month, str(day) + ",", year)
     else:
         if get_days_in_month(year,month) or valid_day(year,month,day) == False:
-            return ""
+            return "Error: year, month or day are invalid"
 
 def start():
     """
@@ -202,26 +208,38 @@ def start():
     """
     # Call input_year function to set the year
     year = input_year()
-    # day_of_year = 0
+    day_of_year = 0
     if year > 0:
         # Call input_day_of _year to supply the day
         day_of_year = input_day_of_year(year)
-    if year > 0 and day_of_year > 0:
-        total_days = 0;
-        month = 0
-        day = 0
-        search = True
-        for i in range(12):
-            if search:
-                days_in_month = get_days_in_month(year, i + 1)
-                total_days += days_in_month
-                if (day_of_year <= total_days):
-                    month = i + 1
-                    day = day_of_year - (total_days - days_in_month)
-                    search = False
-        if month > 0 and day > 0:
-            print(get_date_string(year,month,day))
-
-
+    # Check that both year and day_of_year are valid entries
+        if year > 0 and day_of_year > 0:
+            
+            # Initialize variables
+            total_days = 0
+            month = 0
+            day = 0
+            search = True
+            for i in range(12):
+                if search == True:
+                    
+                    # Call get_days_in_month: pass in provided year and cycle through the months
+                    # get days_in_month returns: an integer value of how many days are in a given month
+                    days_in_month = get_days_in_month(year = year, month = i + 1)
+                    # Based on the day entered calculate total days in the month (including month the day_of_year is in)
+                    total_days += days_in_month
+                    
+                    # Check if day_of_year is less than or equal to total days
+                    # Otherwise keep looping
+                    if (day_of_year <= total_days):
+                        # Take the month value it stopped at and add one to it (fix indexing)
+                        month = i + 1
+                        # Calculate day of the year
+                        day = day_of_year - (total_days - days_in_month)
+                        # Call of Search
+                        search = False
+            if month > 0 and day > 0:
+                #print("We are almost here!")
+                print(get_date_string(year,month,day))
 
 start()
