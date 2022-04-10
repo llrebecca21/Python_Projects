@@ -65,7 +65,7 @@ def input_year():
         either 0 if the year is invalid,
         or the year as an integer.
     """
-    year = input("Enter year")
+    year = input("Enter year: ")
         #if year == False:
             #return 0
             #if year == True:
@@ -77,7 +77,7 @@ def input_day_of_year(year):
     or the year as an integer.
     Must test for 0 (invalid year)
     """
-    day = input("Enter day of year")
+    day = input("Enter day of year: ")
     #if year == True:
     #    return int(year)
     #if year == False:
