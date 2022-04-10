@@ -5,15 +5,17 @@ Credit:
 Description: Create a program such that given a number between 1 and 365 or 366 inclusive and a year, it will give what date it is
 '''
 # Create false year
-year = input("Enter year: ")
-day = input("Enter day of year: ")
-print(year,day)
+#year = input("Enter year: ")
+#day = input("Enter day of year: ")
+#print(year,day)
+
 
 def is_leap_year(year):
     """
     Takes an integer and returns True if year is a leap year or False if year is
     not a leap year
     """
+    valid = False
     if year % 4 == 0 :
         if year % 100 == 0:
             if year % 400 == 0:
@@ -54,10 +56,14 @@ def valid_day_of_year(year,day_of_year):
 
 def input_year():
     """
-    Encapsulates the prompting for the year,
-    and returns either 0 if the year is invalid,
-    or the year as an integer.
-    Must test for 0 (invalid year)
+    Encapsulates the prompting for the year
+
+    Args:
+        None
+        
+    Returns:
+        either 0 if the year is invalid,
+        or the year as an integer.
     """
     year = input("Enter year")
         #if year == False:
@@ -82,6 +88,7 @@ def get_days_in_year(year):
     Returns a 0 for an invalid year,
     Or the number of days in a year as an integer
     """
+    valid = is_leap_year(year)
     if valid == False:
         return 0
     elif valid == True:
@@ -191,10 +198,13 @@ def get_date_string(year,month,day):
 def start():
     """
     Encapsulates all of the code
+
     """
+    # Call input_year function to set the year
     year = input_year()
-    day_of_year = 0
+    # day_of_year = 0
     if year > 0:
+        # Call input_day_of _year to supply the day
         day_of_year = input_day_of_year(year)
     if year > 0 and day_of_year > 0:
         total_days = 0;
@@ -212,3 +222,6 @@ def start():
         if month > 0 and day > 0:
             print(get_date_string(year,month,day))
 
+
+
+start()
