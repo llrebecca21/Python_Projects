@@ -174,18 +174,20 @@ def get_days_in_month(year,month):
     accounting for leap year, or returns 0 if the year or month is invalid
     """
     if is_leap_year(year) == True:
-        if month == 1 or 3 or 5 or 7 or 8 or 10 or 12:
+        print(is_leap_year(year))
+        if month in [1,3,5,7,8,10,12]:
             return 31
         elif month == 2:
             return 29
-        elif month == 4 or 6 or 9 or 11:
+        elif month in [4,6,9,11]:
             return 30
     elif is_leap_year(year) == False:
-        if month == 1 or 3 or 5 or 7 or 8 or 10 or 12:
+        print(is_leap_year(year))
+        if month in [1,3,5,7,8,10,12]:
             return 31
         elif month == 2:
             return 28
-        elif month == 4 or 6 or 9 or 11:
+        elif month in [4,6,9,11]:
             return 30
     else:
         if year or month == False:
@@ -196,9 +198,9 @@ def valid_day(year,month,day):
     Returns False if the year, month or day are invalid
     or True if the arguments are valid
     """
-    if year and month and day == True:
+    if valid_year(year) and valid_month(month) and valid_day_of_year(day) == True:
         return True
-    elif year or month or day != True:
+    elif valid_year(year) and valid_month(month) and valid_day_of_year(day) != True:
         return False
 
 def get_date_string(year,month,day):
@@ -224,8 +226,7 @@ def start():
         # Call input_day_of _year to supply the day
         day_of_year = input_day_of_year(year)
     # Check that both year and day_of_year are valid entries
-        if year > 0 and int(day_of_year) > 0:
-            
+        if year > 0 and day_of_year > 0:
             # Initialize variables
             total_days = 0
             month = 0
@@ -233,20 +234,23 @@ def start():
             search = True
             for i in range(12):
                 if search == True:
-                    
                     # Call get_days_in_month: pass in provided year and cycle through the months
                     # get days_in_month returns: an integer value of how many days are in a given month
-                    days_in_month = int(get_days_in_month(year = year, month = i + 1))
+                    # Error in get_days_in_month
+                    days_in_month = get_days_in_month(year = year, month = i + 1)
+                    
                     # Based on the day entered calculate total days in the month (including month the day_of_year is in)
                     total_days += days_in_month
-                    
+                    print(total_days)
                     # Check if day_of_year is less than or equal to total days
                     # Otherwise keep looping
-                    if (int(day_of_year) <= total_days):
+                    if (day_of_year <= total_days):
                         # Take the month value it stopped at and add one to it (fix indexing)
                         month = i + 1
+                        
                         # Calculate day of the year
-                        day = int(day_of_year - (total_days - days_in_month))
+                        day = day_of_year - (total_days - days_in_month)
+                        print(day)
                         # Call of Search
                         search = False
             if month > 0 and day > 0:
