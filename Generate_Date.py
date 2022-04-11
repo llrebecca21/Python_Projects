@@ -241,23 +241,21 @@ def start():
                     
                     # Based on the day entered calculate total days in the month (including month the day_of_year is in)
                     total_days += days_in_month
-                    print(total_days)
                     # Check if day_of_year is less than or equal to total days
                     # Otherwise keep looping
-                    print(day_of_year)
+                    #print(day_of_year)
                     if (day_of_year <= total_days):
                         # Take the month value it stopped at and add one to it (fix indexing)
                         month = i + 1
-                        #print(month)
                         # Calculate day of the year
-                        day = day_of_year - (total_days - days_in_month)
-                        #print("day: ", day)
+                        day = days_in_month - (total_days - day_of_year)
                         # Call off Search
-                        search = False
-                        print('hi')   
+                        search = False  
         if month > 0 and month <= 12:
             # This is where the bug is
-            print(month, day, year)
+            print("month: ", month)
+            print("year:", year)
+            print("day: ", day)
             print(get_date_string(year,month,day))
 
 start()
