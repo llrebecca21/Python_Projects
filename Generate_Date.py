@@ -36,13 +36,15 @@ def is_leap_year(year):
     if year % 4 == 0 :
         if year % 100 == 0:
             if year % 400 == 0:
-                valid == True
+                valid = True
+                print("It is a Leap Year!")
             else:
-                valid == False
+                valid = False
         else:
-            valid == False
+            valid = True
+            print("It is a leap year!")
     else:
-        valid == False
+        valid = False
     return valid
 
 def valid_year(year):
@@ -65,7 +67,7 @@ def valid_day_of_year(day_of_year):
     returning True if day of year is valid,
     or False if the day of year is invalid
     """
-    if 0 < day_of_year <= 365:
+    if 0 < day_of_year <= 366:
         return True
     else:
         print("Error: day not valid")
@@ -174,7 +176,7 @@ def get_days_in_month(year,month):
     accounting for leap year, or returns 0 if the year or month is invalid
     """
     if is_leap_year(year) == True:
-        #print(is_leap_year(year))
+        print(is_leap_year(year))
         if month in [1,3,5,7,8,10,12]:
             return 31
         elif month == 2:
@@ -212,7 +214,8 @@ def get_date_string(year,month,day):
     """
     if valid_day(year, month, day) == True:
         print("All are valid")
-        return (month, str(day) + ",", year)
+        month = translate_month(month)
+        return (month, day, year)
     else:
         if valid_day(year, month, day) == False:
             return "Error: year, month or day are invalid"
@@ -249,15 +252,13 @@ def start():
                     if (day_of_year <= total_days):
                         # Take the month value it stopped at and add one to it (fix indexing)
                         month = i + 1
+                        #print(month)
                         # Calculate day of the year
                         day = days_in_month - (total_days - day_of_year)
+                        #print('day')
                         # Call off Search
                         search = False  
         if month > 0 and month <= 12:
-            # This is where the bug is
-            print("month: ", month)
-            print("year: ", year)
-            print("day: ", day)
             print(get_date_string(year,month,day))
 
 start()
