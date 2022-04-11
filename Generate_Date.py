@@ -59,7 +59,7 @@ def valid_year(year):
         print("error: year not valid")
         return False
 
-def valid_day_of_year(year,day_of_year):
+def valid_day_of_year(day_of_year):
     """
     Replaces day validity checks, printing out any error,
     returning True if day of year is valid,
@@ -201,6 +201,7 @@ def valid_day(year,month,day):
     if valid_year(year) and valid_month(month) and valid_day_of_year(day) == True:
         return True
     elif valid_year(year) and valid_month(month) and valid_day_of_year(day) != True:
+        print("Error: Either year, month or day is invalid")
         return False
 
 def get_date_string(year,month,day):
@@ -210,6 +211,7 @@ def get_date_string(year,month,day):
         If both are valid a string formatted as Month Day, Year (December 1, 2018)
     """
     if valid_day(year, month, day) == True:
+        print("All are valid")
         return (month, str(day) + ",", year)
     else:
         if valid_day(year, month, day) == False:
@@ -254,7 +256,7 @@ def start():
         if month > 0 and month <= 12:
             # This is where the bug is
             print("month: ", month)
-            print("year:", year)
+            print("year: ", year)
             print("day: ", day)
             print(get_date_string(year,month,day))
 
