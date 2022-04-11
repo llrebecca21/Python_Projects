@@ -97,7 +97,7 @@ def input_day_of_year(year):
     day = input("Enter day of year: ")
     # call valid_year() to check
     if valid_year(year) == True:
-        return int(year)
+        return int(day)
     if valid_year(year) == False:
         return int(day)
 
@@ -174,7 +174,7 @@ def get_days_in_month(year,month):
     accounting for leap year, or returns 0 if the year or month is invalid
     """
     if is_leap_year(year) == True:
-        print(is_leap_year(year))
+        #print(is_leap_year(year))
         if month in [1,3,5,7,8,10,12]:
             return 31
         elif month == 2:
@@ -182,7 +182,7 @@ def get_days_in_month(year,month):
         elif month in [4,6,9,11]:
             return 30
     elif is_leap_year(year) == False:
-        print(is_leap_year(year))
+        #print(is_leap_year(year))
         if month in [1,3,5,7,8,10,12]:
             return 31
         elif month == 2:
@@ -244,18 +244,20 @@ def start():
                     print(total_days)
                     # Check if day_of_year is less than or equal to total days
                     # Otherwise keep looping
+                    print(day_of_year)
                     if (day_of_year <= total_days):
                         # Take the month value it stopped at and add one to it (fix indexing)
                         month = i + 1
-                        
+                        #print(month)
                         # Calculate day of the year
                         day = day_of_year - (total_days - days_in_month)
-                        print(day)
-                        # Call of Search
+                        #print("day: ", day)
+                        # Call off Search
                         search = False
-            if month > 0 and day > 0:
-                # This is where the bug is
-                print(month, day, year)
-                print(get_date_string(year,month,day))
+                        print('hi')   
+        if month > 0 and month <= 12:
+            # This is where the bug is
+            print(month, day, year)
+            print(get_date_string(year,month,day))
 
 start()
