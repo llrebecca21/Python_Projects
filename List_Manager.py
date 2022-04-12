@@ -10,6 +10,7 @@ Description: Create a basic list manager program
 t = []
 
 # All the functions that are called
+# Create pad_string function
 def pad_string(data, size, dir = 'L', chr = ' '):
     data = str(data)
     if len(data) > size:
@@ -19,14 +20,13 @@ def pad_string(data, size, dir = 'L', chr = ' '):
     else:
         return data + chr * (size - len(data))
 
-
-# Create pad_string function
+# Create pad_left function
 def pad_left(data,size,chr = ' '):
     return pad_string(data, size, 'L', chr)
-    
-# Create pad_left function
 
 # Create pad_right function
+def pad_right(data, size, chr = ' '):
+    return pad_string(data, size, 'R', chr)
 
 # Create a command list
 
