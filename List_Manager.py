@@ -10,7 +10,14 @@ Description: Create a basic list manager program
 t = []
 
 # All the functions that are called
-
+def pad_string(data, size, dir = 'L', chr = ' '):
+    data = str(data)
+    if len(data) > size:
+        return data
+    elif dir.upper() == 'L':
+        return chr * (size - len(data)) + data
+    else:
+        return data + chr * (size - len(data))
 
 
 # Create pad_string function
