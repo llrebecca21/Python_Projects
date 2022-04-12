@@ -106,6 +106,24 @@ def cmd_clear(t):
     return ""
 
 # Create a get_max_list_item_size function
+def get_max_list_item_size(t):
+    """
+    Summary: Checks which item in command list is longest
+    Input: list t
+    Output: empty
+    Return: length of the longest item in the list plus 5
+    """
+    command_short = ["Add", "Delete", "List", "Clear"]
+    t = command_short
+    length = 0
+    for item_list in command_short:
+        if len(item_list) == 0:
+            return ""
+        if len(item_list) > -1 and (len(item_list) > length):
+            long_length = item_list
+            length = len(long_length)
+    return length + 5
+
 
 # Create a program that will iterate through the program
 
