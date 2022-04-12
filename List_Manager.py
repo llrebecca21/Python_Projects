@@ -61,8 +61,21 @@ def cmd_add(t):
     """
     new_t = t.append(y)
     return len(t)
-    
+
 # Create a cmd_delete function
+def cmd_delete(t):
+    """
+    Summary: prints list of t at each point in del command
+    Input: t
+    Output: prints current t list and index
+    Return: empty
+    """
+    label_spacing = 5
+    num_spacing = 5
+    for index in range(len(t)):
+        index_2 = index
+        print(pad_right(index, label_spacing), pad_left(t[index_2], num_spacing))
+    return ""
 
 # Create a cmd_list function
 
