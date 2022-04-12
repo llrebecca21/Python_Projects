@@ -126,6 +126,52 @@ def get_max_list_item_size(t):
 
 
 # Create a program that will iterate through the program
+while True:
+    y = input("Enter a command(?forhelp): ")
+    command = y.strip()
+    if command == "":
+        print("Goodbye!")
+        break
+    elif command == "?":
+        print(cmd_help())
+    
+    elif command == "add":
+        while True:
+            y = input("Enter information (empty to stop): ")
+
+            if y == "":
+                break
+            else:
+                print("Added, item count =", cmd_add(t))
+    elif command == "del":
+        delete = True
+        while delete:
+            print(cmd_delete(t))
+            y = input("Enter number to delete (empty to stop): ")
+
+            if y == "":
+                break
+            elif y.isdigit() == False:
+                print("Error, input must be an integer")
+            else:
+                if int(y) <= len(t):
+                    del t[int(y)]
+                    if len(t) == 0:
+                        print("All items deleted")
+                        delete = False
+
+                elif int(y) > len(t):
+                    print("Error, integer too big")
+    elif command == "list":
+        if y == "":
+            break
+        else:
+            print(cmd_list(t))
+    elif command == "clear":
+        if y == "":
+            break
+        else:
+            print(cmd_clear(t))
 
 
 
