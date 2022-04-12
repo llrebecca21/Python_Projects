@@ -2,8 +2,7 @@
 CIS 122 Winter 2020 Lab 08
 Author: Rebecca Lee
 Credit:
-Description: Create a random number generator
-"Work in Progress"
+Description: Create a random integer number generator and store the numbers in a list
 '''
 
 # Import random
@@ -30,9 +29,16 @@ def gril(num,start_range = 1, end_range = 100, sort_list = 'N'):
     elif not isinstance(start_range, int) or not isinstance(end_range, int):
         print('start_range and end_range must be integers')
     else:
-        for i in range(num):
-            r = random.randint(start_range,end_range)
-            t.append(r)
-        if sort.list.upper == 'Y':
-            t.sort()
+        if sort_list == 'N':
+            for i in range(num):
+                r = random.randint(start_range,end_range)
+                t.append(r)
+        elif sort_list == 'Y':
+            for i in range(num):
+                r = random.randint(start_range,end_range)
+                t.append(r)
+                t.sort()
     return t
+
+# Example:
+# print(gril(10,start_range=1, end_range= 100, sort_list ='Y'))
