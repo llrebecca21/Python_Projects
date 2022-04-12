@@ -50,9 +50,18 @@ def cmd_help():
     print(pad_right(command_list[3], label_spacing), pad_left("Clear list", num_spacing))
     print(pad_right(command_list[4], label_spacing))
     return ""
-    
-# Create a cmd_add function
 
+# Create a cmd_add function
+def cmd_add(t):
+    """
+    Summary: After add is typed as the command, the input is added to the list
+    Input: list
+    Output: none
+    Return: return the length of the new appended list
+    """
+    new_t = t.append(y)
+    return len(t)
+    
 # Create a cmd_delete function
 
 # Create a cmd_list function
