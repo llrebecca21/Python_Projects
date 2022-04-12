@@ -21,7 +21,9 @@ def pad_string(data, size, dir = 'L', chr = ' '):
 
 
 # Create pad_string function
-
+def pad_left(data,size,chr = ' '):
+    return pad_string(data, size, 'L', chr)
+    
 # Create pad_left function
 
 # Create pad_right function
