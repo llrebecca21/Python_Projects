@@ -9,8 +9,8 @@ Description: Create a random number generator
 # Import random
 import random
 
-# Create gen_random_integer_list function
-def gen_random_integer_list(num,start_range = 1, end_range = 100, sort_list = 'N'):
+# Create gen_random_integer_list or (gril for short) function
+def gril(num,start_range = 1, end_range = 100, sort_list = 'N'):
     """
     Summary: When definition is called it will create a random integer list
 
