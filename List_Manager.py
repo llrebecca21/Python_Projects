@@ -78,6 +78,19 @@ def cmd_delete(t):
     return ""
 
 # Create a cmd_list function
+def cmd_list(t):
+    """
+    Summary: prints the number of items in the list t and prints which elements are included in the list
+    Input: list t
+    Output: prints len(t) and items in t
+    Return: empty
+    """
+    print("List contains", len(t), "item(s)")
+    for item in t:
+        print(item)
+    return ""
+
+
 
 # Create a cmd_clear function
 
