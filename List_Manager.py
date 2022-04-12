@@ -93,6 +93,17 @@ def cmd_list(t):
 
 
 # Create a cmd_clear function
+def cmd_clear(t):
+    """
+    Summary: clears the current list t
+    Input: list t
+    Output: prints how many items are deleted
+    Return: empty
+    """
+    h = len(t)
+    delete_t = t.clear()
+    print(h, "item(s) removed, list empty")
+    return ""
 
 # Create a get_max_list_item_size function
 
