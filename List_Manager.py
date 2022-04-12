@@ -29,9 +29,28 @@ def pad_right(data, size, chr = ' '):
     return pad_string(data, size, 'R', chr)
 
 # Create a command list
+command_list = ["Add", "Delete", "List", "Clear", "Empty to exit"]
 
 # Create cmd_help function
+def cmd_help():
+    """
+    Summary: gives the available list of commands accepted
+    Input: empty
+    Output: avaliable list of commands and what they do
+    Return: empty
+    """
+    print("***Available Commands***")
 
+    label_spacing = 10
+    num_spacing = 10
+
+    print(pad_right(command_list[0], label_spacing), pad_left("Add to list", num_spacing))
+    print(pad_right(command_list[1], label_spacing), pad_left("Delete information", num_spacing))
+    print(pad_right(command_list[2], label_spacing), pad_left("List information", num_spacing))
+    print(pad_right(command_list[3], label_spacing), pad_left("Clear list", num_spacing))
+    print(pad_right(command_list[4], label_spacing))
+    return ""
+    
 # Create a cmd_add function
 
 # Create a cmd_delete function
